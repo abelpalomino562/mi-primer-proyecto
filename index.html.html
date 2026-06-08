@@ -1,0 +1,409 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moto Centro Villanueva - Taller &amp; Repuestos</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --negro:#0a0a0a;
+  --rojo:#d42b2b;
+  --rojo-oscuro:#a01e1e;
+  --gris:#1a1a1a;
+  --gris-medio:#2a2a2a;
+  --gris-claro:#888;
+  --blanco:#f5f5f0;
+  --amarillo:#f5a623;
+}
+body{background:var(--negro);color:var(--blanco);font-family:'Barlow',sans-serif;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(10,10,10,0.95);border-bottom:1px solid #222;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;backdrop-filter:blur(8px)}
+.logo{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:3px;color:var(--blanco)}
+.logo span{color:var(--rojo)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.85rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:#aaa;transition:color .2s}
+.nav-links a:hover{color:var(--rojo)}
+.nav-cta{background:var(--rojo);color:var(--blanco);padding:.5rem 1.25rem;font-size:.8rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;border:none;cursor:pointer;transition:background .2s}
+.nav-cta:hover{background:var(--rojo-oscuro)}
+
+/* HERO */
+.hero{min-height:90vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:linear-gradient(135deg,#0a0a0a 0%,#1a0505 50%,#0a0a0a 100%)}
+.hero-bg{position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,transparent,transparent 80px,rgba(255,255,255,.015) 80px,rgba(255,255,255,.015) 81px),repeating-linear-gradient(0deg,transparent,transparent 80px,rgba(255,255,255,.015) 80px,rgba(255,255,255,.015) 81px)}
+.hero-content{position:relative;text-align:center;padding:2rem}
+.hero-eyebrow{font-size:.75rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rojo);margin-bottom:1.5rem}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(4rem,12vw,9rem);line-height:.9;letter-spacing:2px;margin-bottom:1.5rem}
+.hero-title span{color:var(--rojo)}x|
+.hero-sub{font-size:1rem;font-weight:300;color:#aaa;max-width:480px;margin:0 auto 2.5rem;line-height:1.7}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--rojo);color:var(--blanco);padding:.85rem 2.5rem;font-size:.85rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:background .2s}
+.btn-primary:hover{background:var(--rojo-oscuro)}
+.btn-outline{background:transparent;color:var(--blanco);padding:.85rem 2.5rem;font-size:.85rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;border:1px solid #555;cursor:pointer;transition:all .2s}
+.btn-outline:hover{border-color:var(--blanco)}
+.hero-stats{display:flex;gap:3rem;justify-content:center;margin-top:4rem;padding-top:3rem;border-top:1px solid #222;flex-wrap:wrap}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--rojo);line-height:1}
+.stat-label{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:#666;margin-top:.25rem}
+
+/* SECTION BASE */
+section{padding:5rem 2rem}
+.section-label{font-size:.7rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--rojo);margin-bottom:1rem}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);letter-spacing:2px;margin-bottom:.5rem}
+.section-sub{font-size:.95rem;color:#888;max-width:500px;line-height:1.7}
+.section-header{margin-bottom:3.5rem}
+
+/* SERVICIOS */
+.servicios{background:var(--negro)}
+.servicios-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:#222}
+.servicio-card{background:var(--negro);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:background .3s;cursor:default}
+.servicio-card::before{content:'';position:absolute;left:0;top:0;width:3px;height:0;background:var(--rojo);transition:height .4s}
+.servicio-card:hover::before{height:100%}
+.servicio-card:hover{background:var(--gris)}
+.servicio-icon{font-size:2rem;margin-bottom:1.25rem}
+.servicio-nombre{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:1px;margin-bottom:.75rem}
+.servicio-desc{font-size:.875rem;color:#888;line-height:1.7}
+.servicio-precio{margin-top:1.25rem;font-size:.8rem;font-weight:600;letter-spacing:1px;color:var(--amarillo);text-transform:uppercase}
+
+/* GALERIA */
+.galeria{background:var(--gris)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px}
+.gallery-item{aspect-ratio:1;background:var(--gris-medio);position:relative;overflow:hidden;cursor:pointer}
+.gallery-item:first-child{grid-column:span 2;aspect-ratio:2/1}
+.gallery-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;font-size:2.5rem;background:linear-gradient(135deg,#1a1a1a,#2a2a2a);transition:transform .4s}
+.gallery-item:hover .gallery-placeholder{transform:scale(1.05)}
+.gallery-label{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:#666}
+.gallery-overlay{position:absolute;inset:0;background:rgba(212,43,43,.0);display:flex;align-items:center;justify-content:center;opacity:0;transition:all .3s}
+.gallery-item:hover .gallery-overlay{opacity:1;background:rgba(212,43,43,.15)}
+.gallery-overlay-text{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px;color:var(--blanco)}
+
+/* PRECIOS */
+.precios{background:var(--negro)}
+.precios-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:#222;max-width:900px;margin:0 auto}
+.precio-card{background:var(--negro);padding:2.5rem 2rem;text-align:center;transition:background .3s}
+.precio-card.destacado{background:var(--rojo);position:relative}
+.precio-card.destacado::before{content:'POPULAR';position:absolute;top:0;left:50%;transform:translateX(-50%);background:var(--amarillo);color:var(--negro);font-size:.65rem;font-weight:700;letter-spacing:2px;padding:.3rem 1rem}
+.precio-nombre{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:2px;margin-bottom:1rem;margin-top:.5rem}
+.precio-monto{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;line-height:1;margin-bottom:.25rem}
+.precio-moneda{font-size:1.2rem;vertical-align:super}
+.precio-periodo{font-size:.75rem;color:rgba(255,255,255,.6);letter-spacing:1px;margin-bottom:1.5rem}
+.precio-lista{list-style:none;text-align:left;margin-bottom:2rem}
+.precio-lista li{padding:.5rem 0;font-size:.875rem;color:rgba(255,255,255,.8);border-bottom:1px solid rgba(255,255,255,.1);display:flex;gap:.5rem;align-items:center}
+.precio-lista li::before{content:'✓';color:var(--amarillo);font-weight:700;flex-shrink:0}
+.precio-card.destacado .precio-lista li::before{color:#fff}
+.precio-btn{width:100%;padding:.85rem;font-size:.8rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s}
+.precio-card:not(.destacado) .precio-btn{background:transparent;border:1px solid #555;color:var(--blanco)}
+.precio-card:not(.destacado) .precio-btn:hover{border-color:var(--rojo);color:var(--rojo)}
+.precio-card.destacado .precio-btn{background:var(--negro);border:none;color:var(--blanco)}
+.precio-card.destacado .precio-btn:hover{background:#111}
+
+/* EQUIPO */
+.equipo{background:var(--gris)}
+.equipo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem}
+.miembro-card{background:var(--negro);padding:2rem 1.5rem;text-align:center;border-bottom:3px solid transparent;transition:border-color .3s}
+.miembro-card:hover{border-color:var(--rojo)}
+.miembro-avatar{width:72px;height:72px;border-radius:50%;background:var(--gris-medio);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--rojo);margin:0 auto 1rem;border:2px solid #333}
+.miembro-nombre{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:1px;margin-bottom:.25rem}
+.miembro-rol{font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--rojo)}
+.miembro-exp{font-size:.8rem;color:#666;margin-top:.5rem}
+
+/* CONTACTO */
+.contacto{background:var(--negro)}
+.contacto-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:900px;margin:0 auto;align-items:start}
+.contacto-info{display:flex;flex-direction:column;gap:1.5rem}
+.info-item{display:flex;gap:1rem;align-items:flex-start}
+.info-icon{width:40px;height:40px;background:var(--gris);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem}
+.info-label{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:#666;margin-bottom:.25rem}
+.info-val{font-size:.95rem}
+.whatsapp-btn{display:flex;align-items:center;gap:.75rem;background:#25D366;color:#fff;padding:1rem 1.5rem;font-size:.85rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border:none;width:100%;margin-top:1rem;transition:background .2s}
+.whatsapp-btn:hover{background:#1ebe57}
+.contacto-form{display:flex;flex-direction:column;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:.4rem}
+.form-label{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:#666}
+.form-input{background:var(--gris);border:1px solid #333;color:var(--blanco);padding:.85rem 1rem;font-family:'Barlow',sans-serif;font-size:.9rem;transition:border-color .2s;outline:none}
+.form-input:focus{border-color:var(--rojo)}
+.form-input::placeholder{color:#555}
+textarea.form-input{resize:vertical;min-height:100px}
+.submit-btn{background:var(--rojo);color:var(--blanco);padding:1rem;font-size:.85rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:background .2s;margin-top:.5rem}
+.submit-btn:hover{background:var(--rojo-oscuro)}
+
+/* FOOTER */
+footer{background:#050505;padding:2rem;text-align:center;border-top:1px solid #1a1a1a}
+.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:3px;margin-bottom:.5rem}
+.footer-logo span{color:var(--rojo)}
+.footer-copy{font-size:.75rem;color:#555;letter-spacing:1px}
+
+@media(max-width:640px){
+  .nav-links{display:none}
+  .contacto-inner{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .gallery-item:first-child{grid-column:span 2}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">MOTO CENTRO <span>VILLANUEVA</span></div>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#precios">Precios</a></li>
+    <li><a href="#equipo">Equipo</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Cotizar</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Taller &amp; Repuestos · Paucara, Huancavelica</p>
+    <h1 class="hero-title">TU MOTO<br><span>MERECE</span><br>LO MEJOR</h1>
+    <p class="hero-sub">Diagnóstico preciso, repuestos originales y técnicos certificados para todas las marcas y modelos.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})">Ver servicios</button>
+      <button class="btn-outline" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Agendar cita</button>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">+2000</div><div class="stat-label">Motos atendidas</div></div>
+      <div><div class="stat-num">14</div><div class="stat-label">Años de experiencia</div></div>
+      <div><div class="stat-num">98%</div><div class="stat-label">Clientes satisfechos</div></div>
+      <div><div class="stat-num">30+</div><div class="stat-label">Marcas atendidas</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="servicios" id="servicios">
+  <div class="section-header">
+    <p class="section-label">Lo que hacemos</p>
+    <h2 class="section-title">Nuestros servicios</h2>
+    <p class="section-sub">Atendemos todo tipo de motos: deportivas, de ruta, scooters y más.</p>
+  </div>
+  <div class="servicios-grid">
+    <div class="servicio-card">
+      <div class="servicio-icon">🔧</div>
+      <div class="servicio-nombre">Mantenimiento general</div>
+      <p class="servicio-desc">Cambio de aceite, filtros, bujías, frenos y revisión completa de sistemas mecánicos.</p>
+      <div class="servicio-precio">Desde S/ 80</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">⚙️</div>
+      <div class="servicio-nombre">Motor y transmisión</div>
+      <p class="servicio-desc">Diagnóstico y reparación de motor, carburador, inyección y caja de cambios.</p>
+      <div class="servicio-precio">Desde S/ 150</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">💡</div>
+      <div class="servicio-nombre">Sistema eléctrico</div>
+      <p class="servicio-desc">Diagnóstico por computadora, instalación de alarmas, luces LED y sistema de carga.</p>
+      <div class="servicio-precio">Desde S/ 60</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">🛞</div>
+      <div class="servicio-nombre">Suspensión y frenos</div>
+      <p class="servicio-desc">Afinación y cambio de horquillas, amortiguadores, pastillas y líquido de frenos.</p>
+      <div class="servicio-precio">Desde S/ 120</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">🎨</div>
+      <div class="servicio-nombre">Carrocería y pintura</div>
+      <p class="servicio-desc">Reparación de plásticos, pintura personalizada y restauración de acabados.</p>
+      <div class="servicio-precio">Desde S/ 200</div>
+    </div>
+    <div class="servicio-card">
+      <div class="servicio-icon">📊</div>
+      <div class="servicio-nombre">Diagnóstico electrónico</div>
+      <p class="servicio-desc">Lectura de códigos de error, calibración de sensores y actualización de ECU.</p>
+      <div class="servicio-precio">Desde S/ 50</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="galeria" id="galeria">
+  <div class="section-header">
+    <p class="section-label">Nuestro trabajo</p>
+    <h2 class="section-title">Galería</h2>
+    <p class="section-sub">Algunos de los trabajos realizados en nuestro taller.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <div class="gallery-placeholder">🏍️<span class="gallery-label">Restauración completa</span></div>
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Ver proyecto</span></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">🔩<span class="gallery-label">Motor revisado</span></div>
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Ver proyecto</span></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">⚡<span class="gallery-label">Sistema eléctrico</span></div>
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Ver proyecto</span></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">🎨<span class="gallery-label">Pintura custom</span></div>
+      <div class="gallery-overlay"><span class="gallery-overlay-text">Ver proyecto</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section class="precios" id="precios">
+  <div class="section-header">
+    <p class="section-label">Planes de mantenimiento</p>
+    <h2 class="section-title">Precios</h2>
+    <p class="section-sub">Paquetes pensados para cuidar tu moto durante todo el año.</p>
+  </div>
+  <div class="precios-grid">
+    <div class="precio-card">
+      <div class="precio-nombre">Básico</div>
+      <div class="precio-monto"><span class="precio-moneda">S/</span>120</div>
+      <div class="precio-periodo">por visita</div>
+      <ul class="precio-lista">
+        <li>Cambio de aceite y filtro</li>
+        <li>Revisión de frenos</li>
+        <li>Inflado de llantas</li>
+        <li>Revisión de cadena</li>
+      </ul>
+      <button class="precio-btn" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Agendar</button>
+    </div>
+    <div class="precio-card destacado">
+      <div class="precio-nombre">Completo</div>
+      <div class="precio-monto"><span class="precio-moneda">S/</span>280</div>
+      <div class="precio-periodo">por visita</div>
+      <ul class="precio-lista">
+        <li>Todo el plan básico</li>
+        <li>Revisión eléctrica</li>
+        <li>Ajuste de carburador</li>
+        <li>Limpieza general</li>
+        <li>Revisión de suspensión</li>
+      </ul>
+      <button class="precio-btn" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Agendar</button>
+    </div>
+    <div class="precio-card">
+      <div class="precio-nombre">Premium</div>
+      <div class="precio-monto"><span class="precio-moneda">S/</span>450</div>
+      <div class="precio-periodo">por visita</div>
+      <ul class="precio-lista">
+        <li>Todo el plan completo</li>
+        <li>Diagnóstico electrónico</li>
+        <li>Revisión de motor</li>
+        <li>Cambio de fluidos</li>
+        <li>Informe detallado</li>
+        <li>Garantía 30 días</li>
+      </ul>
+      <button class="precio-btn" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Agendar</button>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section class="equipo" id="equipo">
+  <div class="section-header">
+    <p class="section-label">Quiénes somos</p>
+    <h2 class="section-title">Nuestro equipo</h2>
+    <p class="section-sub">Técnicos certificados y apasionados por las dos ruedas.</p>
+  </div>
+  <div class="equipo-grid">
+    <div class="miembro-card">
+      <div class="miembro-avatar">VF</div>
+      <div class="miembro-nombre">Villanueva Frank</div>
+      <div class="miembro-rol">Jefe de taller</div>
+      <div class="miembro-exp">Más de 5 años de experiencia</div>
+    </div>
+    <div class="miembro-card">
+      <div class="miembro-avatar">VP</div>
+      <div class="miembro-nombre">Valentín Palomino</div>
+      <div class="miembro-rol">Mecánico general</div>
+      <div class="miembro-exp">Más de 8 años de experiencia</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="section-header" style="text-align:center">
+    <p class="section-label">Escríbenos</p>
+    <h2 class="section-title">Contacto</h2>
+    <p class="section-sub" style="margin:0 auto">Agenda tu cita o consulta lo que necesites. Respondemos en menos de 1 hora.</p>
+  </div>
+  <div class="contacto-inner">
+    <div class="contacto-info">
+      <div class="info-item">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">Dirección</div>
+          <div class="info-val">Av..., Paucara, Huancavelica</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">🕐</div>
+        <div>
+          <div class="info-label">Horario</div>
+          <div class="info-val">Lun–Vie: 8am – 6pm<br>Sáb: 8am – 2pm</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">📞</div>
+        <div>
+          <div class="info-label">Teléfono</div>
+          <div class="info-val">+51 930 152 007</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon">✉️</div>
+        <div>
+          <div class="info-label">Correo</div>
+          <div class="info-val">contacto@motocentrovillanueva.com.pe</div>
+        </div>
+      </div>
+      <button class="whatsapp-btn" onclick="window.open('https://wa.me/51930152007','_blank')">
+        💬 &nbsp;Escríbenos por WhatsApp
+      </button>
+    </div>
+    <div class="contacto-form">
+      <div class="form-group">
+        <label class="form-label">Nombre</label>
+        <input class="form-input" type="text" placeholder="Tu nombre completo">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Teléfono</label>
+        <input class="form-input" type="tel" placeholder="+51 930 152 007">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Servicio</label>
+        <select class="form-input">
+          <option value="">Selecciona un servicio</option>
+          <option>Mantenimiento general</option>
+          <option>Motor y transmisión</option>
+          <option>Sistema eléctrico</option>
+          <option>Suspensión y frenos</option>
+          <option>Carrocería y pintura</option>
+          <option>Diagnóstico electrónico</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Mensaje</label>
+        <textarea class="form-input" placeholder="Cuéntanos qué le pasa a tu moto..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="this.textContent='¡Enviado! Te contactamos pronto ✓';this.style.background='#1a7a3a';setTimeout(()=>{this.textContent='Enviar solicitud';this.style.background=''},3000)">Enviar solicitud</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">MOTO CENTRO <span>VILLANUEVA</span></div>
+  <p class="footer-copy">© 2025 Moto Centro Villanueva · Taller &amp; Repuestos · Paucara, Huancavelica</p>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'})});
+});
+</script>
+</body>
+</html>
